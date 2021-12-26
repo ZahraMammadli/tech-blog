@@ -1,0 +1,26 @@
+[
+  {
+    "comment_body": "A Promise is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action's eventual success value or failure reason.",
+    "date": "2021.12.16",
+    "post_id": 1,
+    "user_id": 1
+  },
+  {
+    "comment_body": "This lets asynchronous methods return values like synchronous methods: instead of immediately returning the final value, the asynchronous method returns a promise to supply the value at some point in the future.",
+    "date": "2021.12.16",
+    "post_id": 1,
+    "user_id": 2
+  },
+  {
+    "comment_body": "A CSS hack is a coding technique used to hide or show CSS markup depending on the browser, version number, or capabilities",
+    "date": "2021.12.17",
+    "post_id": 2,
+    "user_id": 1
+  },
+  {
+    "comment_body": "Browsers have different interpretations of CSS behavior and different levels of support for the W3C standards.",
+    "date": "2021.12.18",
+    "post_id": 2,
+    "user_id": 2
+  }
+]

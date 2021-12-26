@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Promise in Javascript",
+    "date": "2021.12.12",
+    "user_id": 1
+  },
+  {
+    "title": "CSS hacks",
+    "date": "2021.12.13",
+    "user_id": 1
+  },
+  {
+    "title": "User authentication in ORM",
+    "date": "2021.12.14",
+    "user_id": 2
+  }
+]
