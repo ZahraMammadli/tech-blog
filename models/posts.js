@@ -20,6 +20,10 @@ Post.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
+    post_body: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {

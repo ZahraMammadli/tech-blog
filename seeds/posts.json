@@ -2,16 +2,19 @@
   {
     "title": "Promise in Javascript",
     "date": "2021.12.12",
-    "user_id": 1
+    "user_id": 1,
+    "post_body": "This is one of the most difficult concepts to grasp"
   },
   {
     "title": "CSS hacks",
     "date": "2021.12.13",
-    "user_id": 1
+    "user_id": 1,
+    "post_body": "This is a simple test body"
   },
   {
     "title": "User authentication in ORM",
     "date": "2021.12.14",
-    "user_id": 2
+    "user_id": 2,
+    "post_body": "This is another test body"
   }
 ]
