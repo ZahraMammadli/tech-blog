@@ -1,7 +1,12 @@
 <section class="painting">
   <div class="painting-details">
-    <h3>{{title}}</h3>
-    <p>By: {{user_id}}</p>
-    <p> {{comment_body}}</p>
+    <h3>{{postings.title}}</h3>
+    <p>Post_body: {{postings.post_body}}</p>
+    <p>By: {{postings.user_id}}</p>
+    <section class="flex-row justify-center">
+    {{#each postings.comments as |postings|}}
+    {{> painting-details}}
+    {{/each}}
+  </section>
   </div>
 </section>

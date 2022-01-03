@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Post, Comment } = require("../models");
+const { Post, User, Comment } = require("../models/index");
 // Import the custom middleware
 const withAuth = require("../utils/auth");
 
@@ -32,6 +32,7 @@ router.get("/", async (req, res) => {
 router.get("/post/:id", withAuth, async (req, res) => {
   try {
     const posts = await Post.findByPk(req.params.id, {
+      //why it does not include comments?
       include: [
         {
           model: Comment,
@@ -40,7 +41,8 @@ router.get("/post/:id", withAuth, async (req, res) => {
       ],
     });
 
-    const postings = posts.map((post) => post.get({ plain: true }));
+    const postings = posts.get({ plain: true }); // what does plain true mean here?
+    console.log(postings);
     res.render("painting", {
       postings,
       loggedIn: req.session.loggedIn,
