@@ -62,3 +62,35 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 module.exports = router;
+
+// Get posts by user id
+router.get("/dashboard", async (req, res) => {
+  //without auth for testing purposes
+  try {
+    const user_post = await Post.findOne({
+      where: {
+        user_id: 1,
+      },
+    });
+
+    const user_postings = user_post.get({ plain: true }); // what does plain true mean here?
+    console.log(user_postings);
+    res.render("painting", {
+      user_postings,
+      // loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// router.get("/login", (req, res) => {
+//   if (req.session.loggedIn) {
+//     res.redirect("/");
+//     return;
+//   }
+
+//   res.render("login");
+// });
+module.exports = router;
