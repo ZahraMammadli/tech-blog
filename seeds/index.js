@@ -5,7 +5,10 @@ const seedPosts = require("./posts.json");
 const seedComments = require("./comments.json");
 
 const createUsers = async (seedUsers) => {
-  return await User.bulkCreate(seedUsers);
+  return await User.bulkCreate(seedUsers, {
+    individualHooks: true,
+    returning: true,
+  });
 };
 const createPosts = async (seedPosts) => {
   return await Post.bulkCreate(seedPosts);

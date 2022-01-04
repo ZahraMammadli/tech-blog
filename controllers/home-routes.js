@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { request } = require("express");
 const { Post, User, Comment } = require("../models/index");
 // Import the custom middleware
 const withAuth = require("../utils/auth");
@@ -41,10 +42,44 @@ router.get("/post/:id", withAuth, async (req, res) => {
       ],
     });
 
-    const postings = posts.get({ plain: true }); // what does plain true mean here?
+    const postings = posts.get({ plain: true }); // just to get an actual content of the json
     console.log(postings);
     res.render("painting", {
       postings,
+      loggedIn: req.session.loggedIn,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// router.get("/login", (req, res) => {
+//   if (req.session.loggedIn) {
+//     res.redirect("/");
+//     return;
+//   }
+
+//   res.render("login");
+// });
+// module.exports = router;
+
+// Get posts by user id
+router.get("/dashboard", withAuth, async (req, res) => {
+  //without auth for testing purposes
+  // console.log("CHEEEEEEEECK!!!!!" + req.session.user_id);
+  try {
+    const user_posts = await Post.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
+    });
+
+    const user_postings = user_posts.map((post) => post.get({ plain: true }));
+
+    console.log(user_postings);
+    res.render("dashboard", {
+      user_postings,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -61,36 +96,4 @@ router.get("/login", (req, res) => {
 
   res.render("login");
 });
-module.exports = router;
-
-// Get posts by user id
-router.get("/dashboard", async (req, res) => {
-  //without auth for testing purposes
-  try {
-    const user_post = await Post.findOne({
-      where: {
-        user_id: 1,
-      },
-    });
-
-    const user_postings = user_post.get({ plain: true }); // what does plain true mean here?
-    console.log(user_postings);
-    res.render("painting", {
-      user_postings,
-      // loggedIn: req.session.loggedIn,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-// router.get("/login", (req, res) => {
-//   if (req.session.loggedIn) {
-//     res.redirect("/");
-//     return;
-//   }
-
-//   res.render("login");
-// });
 module.exports = router;
