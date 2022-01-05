@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const moment = require("moment");
 const { request } = require("express");
 const { Post, User, Comment } = require("../models/index");
 // Import the custom middleware
@@ -96,4 +97,24 @@ router.get("/login", (req, res) => {
 
   res.render("login");
 });
+
+//  get create page
+
+router.get("/newpost", withAuth, (req, res) => {
+  Post.findAll({
+    where: {
+      id: req.session.id,
+    },
+  })
+    .then((dbPostData) => {
+      // serialize data before passing to template
+      const posts = dbPostData.map((post) => post.get({ plain: true }));
+      res.render("newpost", { posts, loggedIn: true });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 module.exports = router;
