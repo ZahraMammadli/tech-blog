@@ -23,4 +23,7 @@ router.post("/newpost", withAuth, (req, res) => {
     });
 });
 
+
+// create new comment
+
 module.exports = router;

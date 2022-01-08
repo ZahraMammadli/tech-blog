@@ -2,7 +2,7 @@
   <div class="painting-details">
     <h3>{{postings.title}}</h3>
     <p>Post_body: {{postings.post_body}}</p>
-    <p>By: {{postings.user_id}}</p>
+    <p>By: {{postings.user.username}}</p>
     <section class="flex-row justify-center">
     {{#each postings.comments as |postings|}}
     {{> painting-details}}

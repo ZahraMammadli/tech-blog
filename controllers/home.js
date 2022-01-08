@@ -34,17 +34,19 @@ router.get("/", async (req, res) => {
 router.get("/post/:id", withAuth, async (req, res) => {
   try {
     const posts = await Post.findByPk(req.params.id, {
-      //why it does not include comments?
       include: [
         {
           model: Comment,
           attributes: ["comment_body", "date", "user_id"],
+          include: [User],
         },
+        User,
       ],
     });
 
-    const postings = posts.get({ plain: true }); // just to get an actual content of the json
-    console.log(postings);
+    const postings = posts.get({ plain: true }); // to get an actual content of the json
+   
+
     res.render("painting", {
       postings,
       loggedIn: req.session.loggedIn,
@@ -55,25 +57,21 @@ router.get("/post/:id", withAuth, async (req, res) => {
   }
 });
 
-// router.get("/login", (req, res) => {
-//   if (req.session.loggedIn) {
-//     res.redirect("/");
-//     return;
-//   }
 
-//   res.render("login");
-// });
-// module.exports = router;
 
 // Get posts by user id
 router.get("/dashboard", withAuth, async (req, res) => {
-  //without auth for testing purposes
-  // console.log("CHEEEEEEEECK!!!!!" + req.session.user_id);
   try {
     const user_posts = await Post.findAll({
       where: {
         user_id: req.session.user_id,
       },
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+      ],
     });
 
     const user_postings = user_posts.map((post) => post.get({ plain: true }));
@@ -99,11 +97,11 @@ router.get("/login", (req, res) => {
 });
 
 //  get create page
-
+//  move this to post structure in api!!!!!!!
 router.get("/newpost", withAuth, (req, res) => {
   Post.findAll({
     where: {
-      id: req.session.id,
+      id: req.session.user_id,
     },
   })
     .then((dbPostData) => {
