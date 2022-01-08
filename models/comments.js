@@ -13,12 +13,8 @@ Comment.init(
       primaryKey: true,
       allowNull: false,
     },
-    comment_body: {
+    comment_text: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    date: {
-      type: DataTypes.DATE,
       allowNull: false,
     },
     post_id: {
@@ -40,7 +36,6 @@ Comment.init(
     sequelize,
     modelName: "comment",
     freezeTableName: true,
-    timestamps: false,
     underscored: true,
   }
 );

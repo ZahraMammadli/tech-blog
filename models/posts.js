@@ -16,11 +16,7 @@ Post.init(
     title: {
       type: DataTypes.STRING,
     },
-    date: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    post_body: {
+    content: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -32,7 +28,7 @@ Post.init(
       },
     },
   },
-  { sequelize, modelName: "post", freezeTableName: true, timestamps: false }
+  { sequelize, modelName: "post", freezeTableName: true, underscored: true }
 );
 
 module.exports = Post;
