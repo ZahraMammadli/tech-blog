@@ -45,7 +45,6 @@ router.get("/post/:id", withAuth, async (req, res) => {
     });
 
     const postings = posts.get({ plain: true }); // to get an actual content of the json
-   
 
     res.render("painting", {
       postings,
@@ -57,7 +56,40 @@ router.get("/post/:id", withAuth, async (req, res) => {
   }
 });
 
-
+// edit post page
+router.get("/:id", withAuth, (req, res) => {
+  Post.findOne({
+    where: {
+      id: req.params.id,
+    },
+    include: [
+      {
+        model: User,
+        attributes: ["username"],
+      },
+      {
+        model: Comment,
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+    ],
+  })
+    .then((dbPostData) => {
+      if (!dbPostData) {
+        res.status(404).json({ message: "No post found with this id" });
+        return;
+      }
+      // serialize data before passing to template
+      const post = dbPostData.get({ plain: true });
+      res.render("edit-post", { post, loggedIn: true });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 // Get posts by user id
 router.get("/dashboard", withAuth, async (req, res) => {
@@ -97,7 +129,6 @@ router.get("/login", (req, res) => {
 });
 
 //  get create page
-//  move this to post structure in api!!!!!!!
 router.get("/newpost", withAuth, (req, res) => {
   Post.findAll({
     where: {
