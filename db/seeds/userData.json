@@ -1,20 +1,20 @@
 [
-	{
-		"id": 1,
-        "email": "test@test.com",
-        "username": "test",
-		"password": "test1234"
-	},
-	{
-		"id": 123,
-        "email": "aaronauyoong@test.com",
-        "username": "aaronauyoong",
-		"password": "aaronauyoong1"
-	},
-	{
-		"id": 456,
-        "email": "luvuongle@test.com",
-        "username": "coderarchive",
-		"password": "luvuongle1"
-	}
+  {
+    "id": 1,
+    "email": "test@test.com",
+    "username": "test",
+    "password": "test1234"
+  },
+  {
+    "id": 123,
+    "email": "zahraMMM@test.com",
+    "username": "ZahraMMM",
+    "password": "test2"
+  },
+  {
+    "id": 456,
+    "email": "zahra.mrj@gmail.com",
+    "username": "simpletest",
+    "password": "tes2"
+  }
 ]
