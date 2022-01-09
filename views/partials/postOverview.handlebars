@@ -1,16 +1,20 @@
 {{#each posts as |post|}}
-	<section class="posts-overview">
-		<div class="post-overview">
-			<div class="post-overview-card">
-				<div class="post-title">
-					<h3>
-						<a href="/posts/{{id}}">{{title}}</a>
-					</h3>
-				</div>
-				<div class="post-datetime">
-					<p>Posted by: {{user.username}} at {{format_date date_created}}</p>
-				</div>
-			</div>
-		</div>
-	</section>
+  <div class="w-full max-w-2/3 overflow-hidden rounded-lg shadow-lg sm:flex">
+    <div class="w-full sm:w-1/3">
+      <img
+        class="object-cover w-full h-48"
+        src="https://www.poweradmin.com/blog/wp-content/uploads/2019/01/tech-blogs.jpg"
+        alt="Blog"
+      />
+    </div>
+    <div class="flex-1 px-6 py-4">
+      <h4 class="mb-3 text-xl font-semibold tracking-tight text-gray-800"><a
+          href="/posts/{{id}}"
+        > {{title}} </a></h4>
+      <p class="leading-normal text-gray-500">Posted by
+        {{user.username}}
+        on
+        {{format_date date_created}}</p>
+    </div>
+  </div>
 {{/each}}

@@ -1,10 +1,10 @@
 {
   "name": "tech-blog",
-  "description": "Project by: Aaron Au Yoong",
+  "description": "Project by: Zahra Mammadli",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "node db/seeds/seed.js && node server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node db/seeds/seed.js",
     "dev": "nodemon server.js"
@@ -22,14 +22,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aaronauyoong/tech-blog.git"
+    "url": "git+https://github.com/ZahraMammadli/tech-blog.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/aaronauyoong/tech-blog/issues"
+    "url": "https://github.com/ZahraMammadli/tech-blog/issues"
   },
-  "homepage": "https://github.com/aaronauyoong/tech-blog#readme",
+  "homepage": "https://github.com/ZahraMammadli/tech-blog#readme",
   "devDependencies": {
     "nodemon": "^2.0.7"
   }

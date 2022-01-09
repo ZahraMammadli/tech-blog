@@ -1,5 +1,6 @@
-{{! This is what the user will see when they click on the title of post (i.e. brings to a page with expanded post) }}
+ 
 {{#if is_owner}}
+<div class="edit-db">
 <a class="return-dashboard" href="/dashboard">&larr; Back to dashboard</a>
 <section id="edit-post-card" class="edit-post">
 	<div class="card">
@@ -33,6 +34,7 @@
 		</div>
 	</div>
 </section>
+</div>
 
 {{#each comments as |comment|}}
 {{>comment}}
@@ -44,7 +46,6 @@
 
 {{else}}
 
-{{!--  --}}
 
 <section class="posts">
 	<div class="card">
